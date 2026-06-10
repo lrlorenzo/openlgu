@@ -125,10 +125,15 @@ If using STS:
 
 ### Recommended approach:
 
-1. Import project as Maven project:
+1. Open STS. Select:
+   ```
+   C:\workspaces
+
+2. Import project as Maven project:
 
    * File → Import → Existing Maven Projects
-2. Point to:
+   
+3. Point to:
 
    ```
    C:\workspaces\openlgu
@@ -228,7 +233,11 @@ After setup, run database migrations or schema initialization (if provided in th
 
 To run the application:
 
-1. Open STS
+1. Open STS. Select:
+   ```
+   C:\workspaces
+   ```
+
 2. Import the project (if not yet imported):
 
    * File → Import → Existing Maven Projects
