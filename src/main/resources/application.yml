@@ -5,9 +5,8 @@ spring:
         url: r2dbc:postgresql://localhost:5432/openlgu # change this to your database name
         username: postgres # change this to your username
         password: postgres # change this to your password
-servlet:
-    servlet:
-        context-path: /openlgu
+    webflux:
+        base-path: /openlgu
 logging:
     level:
         io.r2dbc.postgresql: INFO
