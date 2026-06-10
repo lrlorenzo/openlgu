@@ -1,0 +1,11 @@
+spring:
+    application:
+        name: openlgu
+    r2dbc:
+        url: r2dbc:postgresql://localhost:5432/openlgu # change this to your database name
+        username: postgres # change this to your username
+        password: postgres # change this to your password
+logging:
+    level:
+        io.r2dbc.postgresql: INFO
+        org.springframework.r2dbc: INFO
