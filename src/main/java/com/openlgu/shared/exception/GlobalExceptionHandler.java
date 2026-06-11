@@ -1,5 +1,6 @@
 package com.openlgu.shared.exception;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -12,17 +13,20 @@ import reactor.core.publisher.Mono;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(ResidentNotFoundException.class)
-    public Mono<ResponseEntity<ErrorResponse>> handle(ResidentNotFoundException ex,
-                                                     ServerHttpRequest request) {
+	@ExceptionHandler(ResidentNotFoundException.class)
+	public Mono<ResponseEntity<ErrorResponse>> handle(ResidentNotFoundException ex, ServerHttpRequest request) {
 
-        ErrorResponse error = new ErrorResponse(
-                ex.getCode(),
-                ex.getMessage(),
-                request.getPath().value()
-        );
+		ErrorResponse error = new ErrorResponse(ex.getCode(), ex.getMessage(), request.getPath().value());
 
-        return Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(error));
-    }
+		return Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(error));
+	}
 
+	@ExceptionHandler(DuplicateKeyException.class)
+	public Mono<ResponseEntity<ErrorResponse>> handleDuplicate(DuplicateKeyException ex, ServerHttpRequest request) {
+
+		ErrorResponse error = new ErrorResponse(ErrorCode.DUPLICATE_KEY.getCode(),
+				ErrorCode.DUPLICATE_KEY.getDefaultMessage(), request.getPath().value());
+
+		return Mono.just(ResponseEntity.status(HttpStatus.CONFLICT).body(error));
+	}
 }

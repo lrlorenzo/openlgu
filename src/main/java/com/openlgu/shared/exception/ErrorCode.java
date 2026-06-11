@@ -1,7 +1,7 @@
 package com.openlgu.shared.exception;
 
 public enum ErrorCode {
-    
+    DUPLICATE_KEY("RES-001", "Duplicate entry detected"),
     RESIDENT_NOT_FOUND("RES-100", "Resident not found: ");
     
     ErrorCode(String code, String message) {
