@@ -8,6 +8,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("resident_application")
 public class ResidentApplication {
     @Id
-    private UUID id;	
+    private UUID id;
+    
+    private ResidentApplicationStatus status;
 
 }
