@@ -225,6 +225,164 @@ spring.datasource.password=postgres
 
 After setup, run database migrations or schema initialization (if provided in the project).
 
+### Database Setup Using pgAdmin ERD Tool
+
+This guide explains how to create the OpenLGU database tables from the provided ERD file using pgAdmin.
+
+#### Prerequisites
+
+Before proceeding, ensure that:
+
+* PostgreSQL is installed and running.
+* pgAdmin is installed.
+* The `openlgu` database has already been created.
+* The ERD file `openlgu.pgerd` is available.
+
+---
+
+#### Step 1: Open pgAdmin
+
+1. Launch **pgAdmin**.
+2. Enter the master password when prompted.
+
+---
+
+#### Step 2: Connect to PostgreSQL Server
+
+1. In the left navigation panel, expand **Servers**.
+2. Select the PostgreSQL server instance containing the OpenLGU database.
+
+---
+
+#### Step 3: Select the OpenLGU Database
+
+1. Expand **Databases**.
+2. Verify that the **openlgu** database exists.
+3. If the database does not exist, create it before continuing.
+
+---
+
+#### Step 4: Open the ERD Tool
+
+1. From the top menu, select:
+
+   ```
+   Tools → ERD Tool
+   ```
+
+2. The ERD Tool window will open.
+
+---
+
+## Step 5: Load the OpenLGU ERD File
+
+1. In the ERD Tool, select:
+
+   ```
+   Load from file
+   ```
+
+2. Browse to and select:
+
+   ```
+   openlgu.pgerd
+   ```
+
+3. Confirm that all tables and relationships are displayed correctly.
+
+---
+
+#### Step 6: Generate SQL
+
+1. In the ERD Tool, select:
+
+   ```
+   Generate SQL
+   ```
+
+2. Review the generated SQL script.
+
+3. Verify that the target database is:
+
+   ```
+   openlgu
+   ```
+
+   **Important:** Ensure you are connected to the correct database before executing the script.
+
+---
+
+#### Step 7: Execute the SQL Script
+
+1. Go to the generated sql
+
+2. Confirm that the selected database is:
+
+   ```
+   openlgu
+   ```
+
+3. Click **Execute Script** (▶) or press:
+
+   ```
+   F5
+   ```
+
+---
+
+#### Step 8: Verify the Tables
+
+1. Refresh the database tree.
+
+2. Navigate to:
+
+   ```
+   Databases
+     └── openlgu
+         └── Schemas
+             └── public
+                 └── Tables
+   ```
+
+3. Confirm that all tables defined in the ERD have been created successfully.
+
+---
+
+## Troubleshooting
+
+### Database Not Selected
+
+If the SQL execution fails, verify that the Query Tool is connected to:
+
+```
+openlgu
+```
+
+### Table Already Exists Errors
+
+If tables already exist, either:
+
+* Drop the existing tables first, or
+* Modify the generated SQL to include `IF NOT EXISTS` where appropriate.
+
+### Relationship Creation Errors
+
+Ensure that:
+
+* Parent tables are created before child tables.
+* Foreign key references are valid.
+
+---
+
+## Expected Result
+
+After successful execution:
+
+* All OpenLGU tables are created.
+* Primary keys are configured.
+* Foreign key relationships are established.
+* The database is ready for application startup and migration validation.
+
 ---
 
 # 9. Running the Application
