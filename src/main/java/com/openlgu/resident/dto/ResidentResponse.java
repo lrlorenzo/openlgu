@@ -11,6 +11,8 @@ public class ResidentResponse {
     private String middleName;
     private LocalDate birthDate;
     private String address;
+    private String region;
+    private String province_huc;
 
     public UUID getId() {
         return id;
@@ -60,12 +62,24 @@ public class ResidentResponse {
         this.address = address;
     }
 
+    public void setRegion(String region) {
+        this.region = region;
+    }
+    public String getRegion() {
+        return region;
+    }
+
+    public void setProvince_huc(String province_huc) {
+        this.province_huc = province_huc;
+    }
+    public String getProvince_huc() {
+        return province_huc;
+    }
     @Override
     public String toString() {
         return "ResidentResponse [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
-                + middleName + ", birthDate=" + birthDate + ", address=" + address + "]";
-    }
-    
+                + middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region + ", province_huc=" + province_huc + "]";
+    }   
     
 
 }

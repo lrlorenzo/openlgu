@@ -1,4 +1,4 @@
-package com.openlgu.resident.dto;
+	package com.openlgu.resident.dto;
 
 import java.time.LocalDate;
 
@@ -27,6 +27,9 @@ public class ResidentRegisterRequest {
     @NotBlank
     @Size(max = 500)
     private String address;
+
+    private String region;
+    private String provinceHuc;
 
     public String getFirstName() {
         return firstName;
@@ -68,11 +71,25 @@ public class ResidentRegisterRequest {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "ResidentRegisterRequest [firstName=" + firstName + ", lastName=" + lastName + ", middleName="
-                + middleName + ", birthDate=" + birthDate + ", address=" + address + "]";
+    public String getRegion() { 
+        return region; }
+
+    public void setRegion(String region) { 
+        this.region = region; 
     }
+
+    public String getProvinceHuc() { 
+        return provinceHuc; 
+    }
+    public void setProvinceHuc(String provinceHuc) { 
+        this.provinceHuc = provinceHuc; 
+    }
+
+    @Override
+	public String toString() {
+		return "ResidentRegisterRequest [firstName=" + firstName + ", lastName=" + lastName + ", middleName="
+				+ middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region + "]";
+	}
     
 
 }
