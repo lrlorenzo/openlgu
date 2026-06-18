@@ -1,44 +1,52 @@
-package com.openlgu.resident.entity;
+package com.openlgu.resident.dto;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
 
-@Table("resident_application")
-public class ResidentApplication {
+public class ResidentApplicationRequest {
 
-	public enum Status {
-		PENDING, APPROVED, REJECTED
-	}
-
-	@Id
-	private UUID id;
+	@NotBlank
+	@Size(max = 100)
 	private String firstName;
+
+	@NotBlank
+	@Size(max = 100)
 	private String lastName;
+
+	@Size(max = 100)
 	private String middleName;
+
+	@NotNull
+	@Past
 	private LocalDate birthDate;
 
+	@NotBlank
+	@Size(max = 500)
 	private String address;
+
+	@NotBlank
+	@Size(max = 10)
 	private String region;
+
+	@NotBlank
+	@Size(max = 10)
 	private String provinceHuc;
+
+	@NotBlank
+	@Size(max = 10)
 	private String municipalCity;
+
+	@NotBlank
+	@Size(max = 10)
 	private String barangay;
 
-	private Status status;
-	private Instant createdAt;
+	@NotBlank
 	private UUID actedBy;
-	private Instant actedAt;
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -112,21 +120,6 @@ public class ResidentApplication {
 		this.barangay = barangay;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
-	public Instant getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Instant createdAt) {
-		this.createdAt = createdAt;
-	}
 
 	public UUID getActedBy() {
 		return actedBy;
@@ -136,21 +129,12 @@ public class ResidentApplication {
 		this.actedBy = actedBy;
 	}
 
-	public Instant getActedAt() {
-		return actedAt;
-	}
-
-	public void setActedAt(Instant actedAt) {
-		this.actedAt = actedAt;
-	}
-
 	@Override
 	public String toString() {
-		return "ResidentApplication [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
+		return "ResidentApplicationRequest [firstName=" + firstName + ", lastName=" + lastName + ", middleName="
 				+ middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region
 				+ ", provinceHuc=" + provinceHuc + ", municipalCity=" + municipalCity + ", barangay=" + barangay
-				+ ", status=" + status + ", createdAt=" + createdAt + ", actedBy=" + actedBy + ", actedAt=" + actedAt
-				+ "]";
+				+ ", actedBy=" + actedBy + "]";
 	}
 
 }

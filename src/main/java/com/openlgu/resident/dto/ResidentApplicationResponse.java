@@ -1,33 +1,24 @@
-package com.openlgu.resident.entity;
+package com.openlgu.resident.dto;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+public class ResidentApplicationResponse {
 
-@Table("resident_application")
-public class ResidentApplication {
-
-	public enum Status {
-		PENDING, APPROVED, REJECTED
-	}
-
-	@Id
 	private UUID id;
 	private String firstName;
 	private String lastName;
 	private String middleName;
 	private LocalDate birthDate;
-
 	private String address;
 	private String region;
 	private String provinceHuc;
 	private String municipalCity;
 	private String barangay;
-
-	private Status status;
+	
+	private String status;
+	
 	private Instant createdAt;
 	private UUID actedBy;
 	private Instant actedAt;
@@ -80,12 +71,12 @@ public class ResidentApplication {
 		this.address = address;
 	}
 
-	public String getRegion() {
-		return region;
-	}
-
 	public void setRegion(String region) {
 		this.region = region;
+	}
+
+	public String getRegion() {
+		return region;
 	}
 
 	public String getProvinceHuc() {
@@ -112,11 +103,11 @@ public class ResidentApplication {
 		this.barangay = barangay;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -146,11 +137,11 @@ public class ResidentApplication {
 
 	@Override
 	public String toString() {
-		return "ResidentApplication [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
-				+ middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region
-				+ ", provinceHuc=" + provinceHuc + ", municipalCity=" + municipalCity + ", barangay=" + barangay
-				+ ", status=" + status + ", createdAt=" + createdAt + ", actedBy=" + actedBy + ", actedAt=" + actedAt
-				+ "]";
+		return "ResidentApplicationResponse [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", middleName=" + middleName + ", birthDate=" + birthDate + ", address=" + address + ", region="
+				+ region + ", provinceHuc=" + provinceHuc + ", municipalCity=" + municipalCity + ", barangay="
+				+ barangay + ", status=" + status + ", createdAt=" + createdAt + ", actedBy=" + actedBy + ", actedAt="
+				+ actedAt + "]";
 	}
 
 }
