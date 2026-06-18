@@ -39,9 +39,9 @@ public class ResidentService {
                 .switchIfEmpty(Mono.error(new ResidentNotFoundException(id)));
     }
 
-    public Mono<ResidentResponse> update(ResidentPatchRequest request) {
+    public Mono<ResidentResponse> update(UUID id, ResidentPatchRequest request) {
 
-        return repository.findById(request.getId()).flatMap(existing -> {
+        return repository.findById(id).flatMap(existing -> {
             applyPatch(existing, request);
             return repository.save(existing);
         }).map(this::toResponse);

@@ -10,9 +10,6 @@ import jakarta.validation.constraints.Size;
 
 public class ResidentPatchRequest {
     
-    @NotNull
-    private UUID id;
-    
     @Size(max = 100)
     private String firstName;
     
@@ -28,14 +25,6 @@ public class ResidentPatchRequest {
     @Size(max = 500)
     private String address;
     
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -77,10 +66,10 @@ public class ResidentPatchRequest {
     }
 
     @Override
-    public String toString() {
-        return "ResidentPatchRequest [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", middleName=" + middleName + ", birthDate=" + birthDate + ", address=" + address + "]";
-    }
+	public String toString() {
+		return "ResidentPatchRequest [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
+				+ ", birthDate=" + birthDate + ", address=" + address + "]";
+	}
 
     
 

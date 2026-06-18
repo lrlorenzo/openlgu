@@ -52,7 +52,7 @@ public class ResidentController {
     @PatchMapping("/{id}")
     public Mono<ResidentResponse> update(@PathVariable UUID id, @RequestBody ResidentPatchRequest request) {
         log.info("Update Request:{}", request);
-        return service.update(request);
+        return service.update(id, request);
     }
 
 }
