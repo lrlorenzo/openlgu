@@ -16,6 +16,11 @@ public class Resident {
     private LocalDate birthDate;
     private String address;
 
+    private String region;
+    private String city;
+    private String barangay;
+    private String province_huc;
+
     public String getAddress() {
         return address;
     }
@@ -64,10 +69,42 @@ public class Resident {
         this.birthDate = birthDate;
     }
 
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public void setBarangay(String barangay){
+        this.barangay = barangay;
+    }
+
+    public String getBarangay(){
+        return barangay;
+    }
+    
+    public String getProvince_huc() {
+        return province_huc;
+    }
+
+    public void setProvince_huc(String province_huc) {
+        this.province_huc = province_huc;
+    }
+
     @Override
     public String toString() {
         return "Resident [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
-                + middleName + ", birthDate=" + birthDate + "]";
+                + middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region + ", city=" + city + ", barangay=" + barangay + ", province_huc=" + province_huc + "]";
     }
 
 }

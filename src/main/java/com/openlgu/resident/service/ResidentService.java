@@ -74,6 +74,8 @@ public class ResidentService {
         resident.setMiddleName(request.getMiddleName());
         resident.setBirthDate(request.getBirthDate());
         resident.setAddress(request.getAddress());
+        resident.setRegion(request.getRegion());
+        resident.setProvince_huc(request.getProvinceHuc());
         return resident;
     }
 
@@ -83,6 +85,8 @@ public class ResidentService {
         response.setLastName(resident.getLastName());
         response.setMiddleName(resident.getMiddleName());
         response.setBirthDate(resident.getBirthDate());
+        response.setRegion(resident.getRegion());
+        response.setProvince_huc(resident.getProvince_huc());
         return response;
     }
 
