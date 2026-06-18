@@ -1,5 +1,6 @@
 package com.openlgu.resident.service;
 
+import java.time.Instant;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -75,18 +76,31 @@ public class ResidentService {
         resident.setBirthDate(request.getBirthDate());
         resident.setAddress(request.getAddress());
         resident.setRegion(request.getRegion());
-        resident.setProvince_huc(request.getProvinceHuc());
+        resident.setProvinceHuc(request.getProvinceHuc());
+        resident.setMunicipalCity(request.getMunicipalCity());
+        resident.setBarangay(request.getBarangay());
+        resident.setApprovedBy(request.getApprovedBy());
+        
+        resident.setApprovedAt(Instant.now());
+        
         return resident;
     }
 
     private ResidentResponse toResponse(Resident resident) {
         ResidentResponse response = new ResidentResponse();
+        response.setId(resident.getId());
         response.setFirstName(resident.getFirstName());
         response.setLastName(resident.getLastName());
         response.setMiddleName(resident.getMiddleName());
         response.setBirthDate(resident.getBirthDate());
         response.setRegion(resident.getRegion());
-        response.setProvince_huc(resident.getProvince_huc());
+        response.setProvinceHuc(resident.getProvinceHuc());
+        response.setMunicipalCity(resident.getMunicipalCity());
+        response.setBarangay(resident.getBarangay());
+        response.setAddress(resident.getAddress());
+        response.setApprovedBy(resident.getApprovedBy());
+        response.setApprovedAt(resident.getApprovedAt());
+        
         return response;
     }
 

@@ -1,6 +1,7 @@
-	package com.openlgu.resident.dto;
+package com.openlgu.resident.dto;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -8,88 +9,131 @@ import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 public class ResidentRegisterRequest {
-    
-    @NotBlank
-    @Size(max = 100)
-    private String firstName;
-    
-    @NotBlank
-    @Size(max = 100)
-    private String lastName;
-    
-    @Size(max = 100)
-    private String middleName;
-    
-    @NotNull
-    @Past
-    private LocalDate birthDate;
-    
-    @NotBlank
-    @Size(max = 500)
-    private String address;
 
-    private String region;
-    private String provinceHuc;
+	@NotBlank
+	@Size(max = 100)
+	private String firstName;
 
-    public String getFirstName() {
-        return firstName;
-    }
+	@NotBlank
+	@Size(max = 100)
+	private String lastName;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	@Size(max = 100)
+	private String middleName;
 
-    public String getLastName() {
-        return lastName;
-    }
+	@NotNull
+	@Past
+	private LocalDate birthDate;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	@NotBlank
+	@Size(max = 500)
+	private String address;
 
-    public String getMiddleName() {
-        return middleName;
-    }
+	@NotBlank
+	@Size(max = 10)
+	private String region;
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
+	@NotBlank
+	@Size(max = 10)
+	private String provinceHuc;
 
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
+	@NotBlank
+	@Size(max = 10)
+	private String municipalCity;
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
+	@NotBlank
+	@Size(max = 10)
+	private String barangay;
 
-    public String getAddress() {
-        return address;
-    }
+	@NotBlank
+	private UUID approvedBy;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public String getRegion() { 
-        return region; }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public void setRegion(String region) { 
-        this.region = region; 
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public String getProvinceHuc() { 
-        return provinceHuc; 
-    }
-    public void setProvinceHuc(String provinceHuc) { 
-        this.provinceHuc = provinceHuc; 
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    @Override
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getProvinceHuc() {
+		return provinceHuc;
+	}
+
+	public void setProvinceHuc(String provinceHuc) {
+		this.provinceHuc = provinceHuc;
+	}
+
+	public String getMunicipalCity() {
+		return municipalCity;
+	}
+
+	public void setMunicipalCity(String municipalCity) {
+		this.municipalCity = municipalCity;
+	}
+
+	public String getBarangay() {
+		return barangay;
+	}
+
+	public void setBarangay(String barangay) {
+		this.barangay = barangay;
+	}
+
+	public UUID getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(UUID approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	@Override
 	public String toString() {
 		return "ResidentRegisterRequest [firstName=" + firstName + ", lastName=" + lastName + ", middleName="
-				+ middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region + "]";
+				+ middleName + ", birthDate=" + birthDate + ", address=" + address + ", region=" + region
+				+ ", provinceHuc=" + provinceHuc + ", municipalCity=" + municipalCity + ", barangay=" + barangay
+				+ ", approvedBy=" + approvedBy + "]";
 	}
-    
 
 }
