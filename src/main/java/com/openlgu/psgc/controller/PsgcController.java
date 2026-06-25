@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.openlgu.psgc.dto.PsgcImportResponse;
 import com.openlgu.psgc.dto.PsgcRegisterRequest;
 import com.openlgu.psgc.dto.PsgcResponse;
 import com.openlgu.psgc.service.PsgcService;
@@ -39,14 +39,12 @@ public class PsgcController {
     }
 
 	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Flux<String> upload(@RequestPart("files") Flux<FilePart> files) {
+	public Flux<PsgcImportResponse> upload(@RequestPart("files") Flux<FilePart> files) {
 		
-	    return Flux.error(
-	            new ResponseStatusException(
-	                HttpStatus.SERVICE_UNAVAILABLE,
-	                "Upload feature is not ready yet"
-	            )
-	        );		
+        return service.process(
+        		files.doOnNext(file -> 
+        			log.info("Processing file: {}", file.filename()))
+        		);
 	}
 
 }

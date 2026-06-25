@@ -11,3 +11,6 @@ logging:
     level:
         io.r2dbc.postgresql: INFO
         org.springframework.r2dbc: INFO
+openlgu:
+    import:
+        batch-size: 500
